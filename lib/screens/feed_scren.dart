@@ -18,6 +18,7 @@ class _FeedScrenState extends State<FeedScren> {
 
           onPressed: () => AuthService.logout(context),
           child: Text("Logout"),
+          
         ),
 
       ),
