@@ -10,7 +10,7 @@ class SinupScreen extends StatefulWidget {
 
 class _SinupScreenState extends State<SinupScreen> {
   final _formKey = GlobalKey<FormState>();
-  String _email,_password,_name;
+  String _email, _password, _name;
   _sumbit() {
     if (_formKey.currentState.validate()) {
       _formKey.currentState.save();
@@ -22,8 +22,9 @@ class _SinupScreenState extends State<SinupScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView (
-                child: Container(height: MediaQuery.of(context).size.height,
+      body: SingleChildScrollView(
+        child: Container(
+          height: MediaQuery.of(context).size.height,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -35,19 +36,23 @@ class _SinupScreenState extends State<SinupScreen> {
                     fontFamily: 'SEGA',
                     color: Color.fromRGBO(0, 191, 255, 50)),
               ),
-              SizedBox(height: 15.0,),
+              SizedBox(
+                height: 15.0,
+              ),
               Form(
                 key: _formKey,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                     Padding(
+                    Padding(
                       padding: const EdgeInsets.symmetric(
                         horizontal: 30.0,
                         vertical: 10.0,
                       ),
                       child: TextFormField(
-                        decoration: InputDecoration(labelText: 'Name',border: OutlineInputBorder(
+                        decoration: InputDecoration(
+                            labelText: 'Name',
+                            border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(32.0))),
                         validator: (input) => input.trim().isEmpty
                             ? 'İsim Alanı Boş Geçilemez.'
@@ -61,8 +66,11 @@ class _SinupScreenState extends State<SinupScreen> {
                         vertical: 10.0,
                       ),
                       child: TextFormField(
-                        decoration: InputDecoration(labelText: 'E-Mail',border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(32.0))),
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(32.0)),
+                          labelText: 'E-Mail',
+                        ),
                         validator: (input) => !input.contains('@')
                             ? 'lütfen Geçerli Bir E-Mail Adresi Giriniz.'
                             : null,
@@ -75,10 +83,13 @@ class _SinupScreenState extends State<SinupScreen> {
                         vertical: 10.0,
                       ),
                       child: TextFormField(
-                        decoration: InputDecoration(labelText: 'Password',border: OutlineInputBorder(
+                        decoration: InputDecoration(
+                            labelText: 'Password',
+                            border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(32.0))),
-                        validator: (input) =>
-                            input.length < 8 ? 'en az 8 karakter olmalı..' : null,
+                        validator: (input) => input.length < 8
+                            ? 'en az 8 karakter olmalı..'
+                            : null,
                         onSaved: (input) => _password = input,
                         obscureText: true,
                       ),
@@ -89,12 +100,10 @@ class _SinupScreenState extends State<SinupScreen> {
                     Container(
                       width: 200.0,
                       child: FlatButton(
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(32.0)),
                         onPressed: _sumbit,
                         color: Color.fromRGBO(0, 191, 255, 50),
                         child: Text(
                           "Singup",
-                          
                           style: TextStyle(color: Colors.white, fontSize: 18.0),
                         ),
                       ),
@@ -105,7 +114,8 @@ class _SinupScreenState extends State<SinupScreen> {
                     Container(
                       width: 100.0,
                       child: FlatButton(
-                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(32.0)),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(32.0)),
                         onPressed: () => Navigator.pop(context),
                         color: Color.fromRGBO(0, 191, 255, 50),
                         child: Text(

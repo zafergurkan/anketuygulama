@@ -1,3 +1,4 @@
+import 'package:anketuygulama/services/auth_service.dart';
 import 'package:flutter/material.dart';
 import 'package:anketuygulama/screens/signup_screen.dart';
 
@@ -13,9 +14,7 @@ class _LoginScreenState extends State<LoginScreen> {
   _sumbit() {
     if (_formKey.currentState.validate()) {
       _formKey.currentState.save();
-      print(_email);
-      print(_password);
-      //login firebase
+    AuthService.login(_email, _password);
     }
   }
 
@@ -59,7 +58,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         validator: (input) => !input.contains('@')
                             ? 'lütfen Geçerli Bir E-Mail Adresi Giriniz.'
                             : null,
-                        onSaved: (input) => _password = input,
+                        onSaved: (input) => _email = input,
                       ),
                     ),
                     Padding(
@@ -75,7 +74,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         validator: (input) => input.length < 8
                             ? 'en az 8 karakter olmalı..'
                             : null,
-                        onSaved: (input) => _email = input,
+                        onSaved: (input) => _password = input,
                         obscureText: true,
                       ),
                     ),

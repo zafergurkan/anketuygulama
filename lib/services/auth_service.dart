@@ -29,12 +29,13 @@ class AuthService {
     }
   }
 
-
-  static void logout(BuildContext context){
+  static void logout(BuildContext context) {
     _auth.signOut();
     Navigator.pushReplacementNamed(context, LoginScreen.id);
+  }
 
-
-
+  
+  static void login(String email,String password) {
+    _auth.signInWithEmailAndPassword(email: email,password: password);
   }
 }
