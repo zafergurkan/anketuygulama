@@ -16,7 +16,7 @@ class _FeedScrenState extends State<FeedScren> {
 
         child: FlatButton(
 
-          onPressed: () => AuthService.logout(context),
+          onPressed: () => AuthService.logout(),
           child: Text("Logout"),
           
         ),
