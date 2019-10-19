@@ -1,3 +1,4 @@
+import 'package:anketuygulama/services/auth_service.dart';
 import 'package:flutter/material.dart';
 
 class SinupScreen extends StatefulWidget {
@@ -9,14 +10,12 @@ class SinupScreen extends StatefulWidget {
 
 class _SinupScreenState extends State<SinupScreen> {
   final _formKey = GlobalKey<FormState>();
-  String _email, _password,_name;
+  String _email,_password,_name;
   _sumbit() {
     if (_formKey.currentState.validate()) {
       _formKey.currentState.save();
-      print(_name);
       print(_email);
-      print(_password);
-      //login firebase
+      AuthService.signUpUser(context, _name, _email, _password);
     }
   }
 
@@ -64,7 +63,7 @@ class _SinupScreenState extends State<SinupScreen> {
                         validator: (input) => !input.contains('@')
                             ? 'lütfen Geçerli Bir E-Mail Adresi Giriniz.'
                             : null,
-                        onSaved: (input) => _password = input,
+                        onSaved: (input) => _email = input,
                       ),
                     ),
                     Padding(
@@ -76,7 +75,7 @@ class _SinupScreenState extends State<SinupScreen> {
                         decoration: InputDecoration(labelText: 'Password'),
                         validator: (input) =>
                             input.length < 8 ? 'en az 8 karakter olmalı..' : null,
-                        onSaved: (input) => _email = input,
+                        onSaved: (input) => _password = input,
                         obscureText: true,
                       ),
                     ),

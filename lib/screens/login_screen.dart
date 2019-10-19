@@ -35,7 +35,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 'PollApp',
                 style: TextStyle(
                     fontSize: 50.0,
-                    fontFamily: ' SEGA',
+                    fontFamily: 'SEGA',
                     color: Color.fromRGBO(0, 191, 255, 50)),
               ),
               Form(
