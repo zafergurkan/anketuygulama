@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "910006842397",
+    "firebase_url": "https://anketuygulama-8f8b9.firebaseio.com",
+    "project_id": "anketuygulama-8f8b9",
+    "storage_bucket": "anketuygulama-8f8b9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:910006842397:android:49e22077bdeb8ac67082f4",
+        "android_client_info": {
+          "package_name": "com.example.anketuygulama"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "910006842397-5nbb61t3m5ggvars4t7730e1shdlq7d9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDTjhTb-0Ka-qZrw4idKhbwqGiaSnSA5WA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "910006842397-5nbb61t3m5ggvars4t7730e1shdlq7d9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
