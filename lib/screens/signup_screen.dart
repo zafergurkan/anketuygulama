@@ -35,6 +35,7 @@ class _SinupScreenState extends State<SinupScreen> {
                     fontFamily: 'SEGA',
                     color: Color.fromRGBO(0, 191, 255, 50)),
               ),
+              SizedBox(height: 15.0,),
               Form(
                 key: _formKey,
                 child: Column(
@@ -46,7 +47,8 @@ class _SinupScreenState extends State<SinupScreen> {
                         vertical: 10.0,
                       ),
                       child: TextFormField(
-                        decoration: InputDecoration(labelText: 'Name'),
+                        decoration: InputDecoration(labelText: 'Name',border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(32.0))),
                         validator: (input) => input.trim().isEmpty
                             ? 'İsim Alanı Boş Geçilemez.'
                             : null,
@@ -59,7 +61,8 @@ class _SinupScreenState extends State<SinupScreen> {
                         vertical: 10.0,
                       ),
                       child: TextFormField(
-                        decoration: InputDecoration(labelText: 'E-Mail'),
+                        decoration: InputDecoration(labelText: 'E-Mail',border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(32.0))),
                         validator: (input) => !input.contains('@')
                             ? 'lütfen Geçerli Bir E-Mail Adresi Giriniz.'
                             : null,
@@ -72,7 +75,8 @@ class _SinupScreenState extends State<SinupScreen> {
                         vertical: 10.0,
                       ),
                       child: TextFormField(
-                        decoration: InputDecoration(labelText: 'Password'),
+                        decoration: InputDecoration(labelText: 'Password',border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(32.0))),
                         validator: (input) =>
                             input.length < 8 ? 'en az 8 karakter olmalı..' : null,
                         onSaved: (input) => _password = input,
@@ -85,24 +89,27 @@ class _SinupScreenState extends State<SinupScreen> {
                     Container(
                       width: 200.0,
                       child: FlatButton(
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(32.0)),
                         onPressed: _sumbit,
                         color: Color.fromRGBO(0, 191, 255, 50),
                         child: Text(
                           "Singup",
+                          
                           style: TextStyle(color: Colors.white, fontSize: 18.0),
                         ),
                       ),
                     ),
                     SizedBox(
-                      height: 30.0,
+                      height: 10.0,
                     ),
                     Container(
-                      width: 200.0,
+                      width: 100.0,
                       child: FlatButton(
+                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(32.0)),
                         onPressed: () => Navigator.pop(context),
                         color: Color.fromRGBO(0, 191, 255, 50),
                         child: Text(
-                          "Go To Login",
+                          "Login",
                           style: TextStyle(color: Colors.white, fontSize: 18.0),
                         ),
                       ),

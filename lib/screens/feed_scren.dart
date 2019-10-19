@@ -1,3 +1,4 @@
+import 'package:anketuygulama/services/auth_service.dart';
 import 'package:flutter/material.dart';
 
 class FeedScren extends StatefulWidget {
@@ -11,6 +12,15 @@ class _FeedScrenState extends State<FeedScren> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.blue,
+      body: Center(
+
+        child: FlatButton(
+
+          onPressed: () => AuthService.logout(context),
+          child: Text("Logout"),
+        ),
+
+      ),
     );
   }
 }

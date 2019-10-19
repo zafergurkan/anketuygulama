@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:anketuygulama/screens/signup_screen.dart';
 
-
 class LoginScreen extends StatefulWidget {
   static final String id = 'login_Screen';
   @override
@@ -9,7 +8,6 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  
   final _formKey = GlobalKey<FormState>();
   String _email, _password;
   _sumbit() {
@@ -25,8 +23,10 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomPadding: false,
-      body: SingleChildScrollView (
-                child: Container( height: MediaQuery.of(context).size.height,
+      
+      body: SingleChildScrollView(
+        child: Container(
+          height: MediaQuery.of(context).size.height,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -37,6 +37,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     fontSize: 50.0,
                     fontFamily: 'SEGA',
                     color: Color.fromRGBO(0, 191, 255, 50)),
+              ),
+              SizedBox(
+                height: 40.0,
               ),
               Form(
                 key: _formKey,
@@ -49,7 +52,10 @@ class _LoginScreenState extends State<LoginScreen> {
                         vertical: 10.0,
                       ),
                       child: TextFormField(
-                        decoration: InputDecoration(labelText: 'E-Mail'),
+                        decoration: InputDecoration(
+                            labelText: 'E-Mail',
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(32.0))),
                         validator: (input) => !input.contains('@')
                             ? 'lütfen Geçerli Bir E-Mail Adresi Giriniz.'
                             : null,
@@ -62,39 +68,47 @@ class _LoginScreenState extends State<LoginScreen> {
                         vertical: 10.0,
                       ),
                       child: TextFormField(
-                        decoration: InputDecoration(labelText: 'Password'),
-                        validator: (input) =>
-                            input.length < 8 ? 'en az 8 karakter olmalı..' : null,
+                        decoration: InputDecoration(
+                            labelText: 'Password',
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(32.0))),
+                        validator: (input) => input.length < 8
+                            ? 'en az 8 karakter olmalı..'
+                            : null,
                         onSaved: (input) => _email = input,
                         obscureText: true,
                       ),
                     ),
                     SizedBox(
-                      height: 20.0,
+                      height: 27.0,
                     ),
                     Container(
                       width: 200.0,
                       child: FlatButton(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(32.0)),
                         onPressed: _sumbit,
                         color: Color.fromRGBO(0, 191, 255, 50),
                         child: Text(
-                          "Login",
-                          style: TextStyle(color: Colors.white, fontSize: 18.0),
+                          'Login',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18.0,
+                          ),
                         ),
                       ),
                     ),
                     SizedBox(
-                      height: 30.0,
+                      height: 10.0,
                     ),
                     Container(
-                      width: 200.0,
                       child: FlatButton(
                         onPressed: () =>
                             Navigator.pushNamed(context, SinupScreen.id),
-                        color: Color.fromRGBO(0, 191, 255, 50),
                         child: Text(
-                          "Singup",
-                          style: TextStyle(color: Colors.white, fontSize: 18.0),
+                          "Create Account",
+                          style: TextStyle(
+                              color: Colors.redAccent, fontSize: 18.0),
                         ),
                       ),
                     ),

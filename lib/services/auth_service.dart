@@ -1,4 +1,5 @@
 import 'package:anketuygulama/screens/feed_scren.dart';
+import 'package:anketuygulama/screens/login_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -26,5 +27,14 @@ class AuthService {
     } catch (e) {
       print(e);
     }
+  }
+
+
+  static void logout(BuildContext context){
+    _auth.signOut();
+    Navigator.pushReplacementNamed(context, LoginScreen.id);
+
+
+
   }
 }
