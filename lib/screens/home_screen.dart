@@ -1,4 +1,9 @@
-import 'package:anketuygulama/services/auth_service.dart';
+import 'package:anketuygulama/screens/activity_screen.dart';
+import 'package:anketuygulama/screens/creat_post_screen.dart';
+import 'package:anketuygulama/screens/feed_scren.dart';
+import 'package:anketuygulama/screens/profile_screen.dart';
+import 'package:anketuygulama/screens/searc_screen.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -9,18 +14,19 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  int _currentTab = 0;
+  PageController _pageController;
+  @override
+  void initState() {
+    super.initState();
+    _pageController = PageController();
+  }
 
-  int _currentTab=0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Center(
-          child: FlatButton(
-            onPressed: () => AuthService.logout(),
-            child: Text("Logout"),
-          ),
-        ),
         appBar: AppBar(
+          
           backgroundColor: Colors.white,
           title: Text(
             'PollApp',
@@ -31,17 +37,36 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
         ),
-        bottomNavigationBar: CupertinoTabBar(
-          activeColor: Colors.deepPurple,
-          currentIndex: _currentTab,
-          onTap: (int index){
+        body: PageView(
+          controller: _pageController,
+          children: <Widget>[
+            FeedScren(),
+            SearchScreen(),
+            CreateScreen(),
+            ActivitySearch(),
+            ProfileScreen(),
+          ],
+          onPageChanged: (int index) {
             setState(() {
-             _currentTab=index; 
-             
+              _currentTab = index;
             });
 
           },
-
+        ),
+        bottomNavigationBar: CupertinoTabBar(
+          activeColor: Colors.deepPurple,
+          currentIndex: _currentTab,
+          onTap: (int index) {
+            setState(() {
+              _currentTab = index;
+            });
+            
+            _pageController.animateToPage(
+              index,
+              duration: Duration(milliseconds: 200),
+              curve: Curves.easeIn,
+            );
+          },
           items: [
             BottomNavigationBarItem(
               icon: Icon(
