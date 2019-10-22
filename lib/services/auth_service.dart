@@ -1,5 +1,5 @@
-import 'package:anketuygulama/screens/feed_scren.dart';
 
+import 'package:anketuygulama/screens/home_screen.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -23,7 +23,7 @@ class AuthService {
           'email': email,
           'profileImageUrl': '',
         });
-        Navigator.pop(context,FeedScren.id);
+        Navigator.pop(context, HomeScreen.id);
       }
     } catch (e) {
       print(e);
@@ -31,21 +31,12 @@ class AuthService {
   }
 
   static void logout() {
-  
-  _auth.signOut();
-   
-
+    _auth.signOut();
   }
-  
-  static Future login(String email,String password) async {
 
+  static void login(String email, String password) async {
     try {
-    await  _auth.signInWithEmailAndPassword(email: email,password: password);
-    } catch (e) {
-
-    }
-    
-    
-      
+      await _auth.signInWithEmailAndPassword(email: email, password: password);
+    } catch (e) {}
   }
 }

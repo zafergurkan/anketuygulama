@@ -36,7 +36,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 style: TextStyle(
                     fontSize: 50.0,
                     fontFamily: 'SEGA',
-                    color: Color.fromRGBO(0, 191, 255, 50)),
+                    color: Colors.deepPurple),
               ),
               SizedBox(
                 height: 40.0,
@@ -52,8 +52,10 @@ class _LoginScreenState extends State<LoginScreen> {
                         vertical: 10.0,
                       ),
                       child: TextFormField(
+                        
                         decoration: InputDecoration(
                             labelText: 'E-Mail',
+                            hoverColor: Colors.deepPurple,
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(32.0))),
                         validator: (input) => !input.contains('@')
@@ -88,7 +90,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(32.0)),
                         onPressed: _sumbit,
-                        color: Color.fromRGBO(0, 191, 255, 50),
+                        color: Colors.deepPurple,
                         child: Text(
                           'Login',
                           style: TextStyle(
