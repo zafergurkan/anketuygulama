@@ -8,6 +8,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
+
+  final String userId;
+  HomeScreen({this.userId}); 
+
   static final String id = 'home_screen';
   @override
   _HomeScreenState createState() => _HomeScreenState();
@@ -44,7 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
             SearchScreen(),
             CreateScreen(),
             ActivitySearch(),
-            ProfileScreen(),
+            ProfileScreen(userId: widget.userId),
           ],
           onPageChanged: (int index) {
             setState(() {
