@@ -1,6 +1,7 @@
 import 'package:anketuygulama/models/user_model.dart';
 import 'package:anketuygulama/screens/edit_profile_screen.dart';
 import 'package:anketuygulama/utilities/constants.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -24,10 +25,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
             );
           }
           User user = User.fromDoc(snapshot.data);
-          print(user.name);
-          print(user.email);
-          print(user.bio);
-          print(user.id);
           return ListView(
             children: <Widget>[
               Padding(
@@ -36,8 +33,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   children: <Widget>[
                     CircleAvatar(
                       radius: 50.0,
-                      backgroundImage: NetworkImage(
-                          'https://content-static.upwork.com/uploads/2014/10/01073427/profilephoto1.jpg'),
+                      backgroundColor: Colors.grey,
+                      backgroundImage: user.profileImageUrl.isEmpty
+                          ? AssetImage('assets/images/user_placeholder.jpg')
+                          : CachedNetworkImageProvider(user.profileImageUrl),
                     ),
                     Expanded(
                       child: Column(
@@ -98,10 +97,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               onPressed: () => Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (_) => EditProfileScreen(
-                                        user: user,
-                                      ),
-                                      )),
+                                    builder: (_) => EditProfileScreen(
+                                      user: user,
+                                    ),
+                                  )),
                               color: Colors.deepPurple,
                               textColor: Colors.white,
                               child: Text(
