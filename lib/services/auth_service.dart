@@ -1,5 +1,3 @@
-import 'package:anketuygulama/screens/feed_scren.dart';
-import 'package:anketuygulama/screens/login_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -22,20 +20,20 @@ class AuthService {
           'email': email,
           'profileImageUrl': '',
         });
-        Navigator.pushReplacementNamed(context, FeedScren.id);
+        Navigator.pop(context);
       }
     } catch (e) {
       print(e);
     }
   }
 
-  static void logout(BuildContext context) {
+  static void logout() {
     _auth.signOut();
-    Navigator.pushReplacementNamed(context, LoginScreen.id);
   }
 
-  
-  static void login(String email,String password) {
-    _auth.signInWithEmailAndPassword(email: email,password: password);
+  static void login(String email, String password) async {
+    try {
+      await _auth.signInWithEmailAndPassword(email: email, password: password);
+    } catch (e) {}
   }
 }

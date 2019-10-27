@@ -1,4 +1,5 @@
 import 'package:anketuygulama/screens/feed_scren.dart';
+import 'package:anketuygulama/screens/home_screen.dart';
 import 'package:anketuygulama/screens/login_screen.dart';
 import 'package:anketuygulama/screens/signup_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -12,7 +13,7 @@ class MyApp extends StatelessWidget {
       stream: FirebaseAuth.instance.onAuthStateChanged,
       builder: (BuildContext contex, snapshot) {
         if (snapshot.hasData) {
-          return FeedScren();
+          return HomeScreen(userId: snapshot.data.uid);
         } else {
           return LoginScreen();
         }
@@ -25,11 +26,16 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         title: 'PollApp',
         debugShowCheckedModeBanner: false,
+        theme: ThemeData(primaryIconTheme: Theme.of(context).primaryIconTheme.copyWith(
+          color:Colors.black,
+        ),
+        ),
         home: _getScreen(),
         routes: {
           LoginScreen.id: (context) => LoginScreen(),
           SinupScreen.id: (context) => SinupScreen(),
           FeedScren.id: (context) => FeedScren(),
+          HomeScreen.id: (context) => HomeScreen(),
         });
   }
 }

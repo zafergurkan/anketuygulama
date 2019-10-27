@@ -64,6 +64,9 @@ flutter:
      - family: SEGA
        fonts:
          - asset: assest/fonts/SEGA.ttf
+     - family: MyFlutterApp
+       fonts:
+         - asset: assest/fonts/MyFlutterApp.ttf
   #       - asset: fonts/Schyler-Regular.ttf
   #         style: italic
   #   - family: Trajan Pro

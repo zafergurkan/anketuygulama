@@ -100,6 +100,8 @@ class _SinupScreenState extends State<SinupScreen> {
                     Container(
                       width: 200.0,
                       child: FlatButton(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(32.0)),
                         onPressed: _sumbit,
                         color: Color.fromRGBO(0, 191, 255, 50),
                         child: Text(
