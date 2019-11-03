@@ -1,17 +1,15 @@
+import 'package:anketuygulama/models/user_data.dart';
 import 'package:anketuygulama/screens/activity_screen.dart';
-import 'package:anketuygulama/screens/creat_post_screen.dart';
+import 'package:anketuygulama/screens/create_post_screen.dart';
 import 'package:anketuygulama/screens/feed_scren.dart';
 import 'package:anketuygulama/screens/profile_screen.dart';
-import 'package:anketuygulama/screens/searc_screen.dart';
+import 'package:anketuygulama/screens/search_screen.dart';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
-
-  final String userId;
-  HomeScreen({this.userId}); 
-
   static final String id = 'home_screen';
   @override
   _HomeScreenState createState() => _HomeScreenState();
@@ -29,18 +27,6 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          
-          backgroundColor: Colors.white,
-          title: Text(
-            'PollApp',
-            style: TextStyle(
-              color: Colors.deepPurple,
-              fontFamily: 'SEGA',
-              fontSize: 15.0,
-            ),
-          ),
-        ),
         body: PageView(
           controller: _pageController,
           children: <Widget>[
@@ -48,7 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
             SearchScreen(),
             CreateScreen(),
             ActivitySearch(),
-            ProfileScreen(userId: widget.userId),
+            ProfileScreen(userId: Provider.of<UserData>(context).currentUserId),
           ],
           onPageChanged: (int index) {
             setState(() {

@@ -1,8 +1,10 @@
+import 'package:anketuygulama/models/user_data.dart';
 import 'package:anketuygulama/models/user_model.dart';
 import 'package:anketuygulama/screens/edit_profile_screen.dart';
 import 'package:anketuygulama/utilities/constants.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ProfileScreen extends StatefulWidget {
   final String userId;
@@ -15,6 +17,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+       appBar: AppBar(
+          backgroundColor: Colors.white,
+          title: Text(
+            'PollApp',
+            style: TextStyle(
+              color: Colors.deepPurple,
+              fontFamily: 'SEGA',
+              fontSize: 15.0,
+            ),
+          ),
+        ),
       backgroundColor: Colors.white,
       body: FutureBuilder(
         future: userRef.document(widget.userId).get(),
@@ -93,7 +106,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           ),
                           Container(
                             width: 200.0,
-                            child: FlatButton(
+                            child: widget.userId == Provider.of<UserData>(context).currentUserId ? FlatButton(
                               onPressed: () => Navigator.push(
                                   context,
                                   MaterialPageRoute(
@@ -105,6 +118,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               textColor: Colors.white,
                               child: Text(
                                 'Profili Düzenle',
+                                style: TextStyle(fontSize: 18.0),
+                              ),
+                            ) :
+                            FlatButton(
+                              onPressed: () => print('Takip Et'),
+                              color: Colors.deepPurple,
+                              textColor: Colors.white,
+                              child: Text(
+                                'Takip Et',
                                 style: TextStyle(fontSize: 18.0),
                               ),
                             ),
