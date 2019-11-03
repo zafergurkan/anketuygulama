@@ -7,6 +7,7 @@ import 'package:anketuygulama/services/storage_service.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
@@ -80,12 +81,20 @@ class _CreateScreenState extends State<CreateScreen> {
     Navigator.pop(context);
     File imageFile = await ImagePicker.pickImage(source: source);
     if (imageFile != null) {
+      imageFile = await _cropImage(imageFile);
       setState(() {
         _image = imageFile;
       });
     }
   }
 
+  _cropImage(File imageFile) async {
+    File croppedImage = await ImageCropper.cropImage(
+      sourcePath: imageFile.path,
+      aspectRatio: CropAspectRatio(ratioX: 1.0, ratioY: 1.0),
+    );
+    return croppedImage;
+  }
   _submit() async {
     if (!_isLoading && _image != null && _caption.isNotEmpty) {
       setState(() {
