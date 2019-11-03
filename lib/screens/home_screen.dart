@@ -1,6 +1,6 @@
 import 'package:anketuygulama/models/user_data.dart';
 import 'package:anketuygulama/screens/activity_screen.dart';
-import 'package:anketuygulama/screens/creat_post_screen.dart';
+import 'package:anketuygulama/screens/create_post_screen.dart';
 import 'package:anketuygulama/screens/feed_scren.dart';
 import 'package:anketuygulama/screens/profile_screen.dart';
 import 'package:anketuygulama/screens/search_screen.dart';
