@@ -27,4 +27,69 @@ class DatabaseService {
       'timestamp': post.timestamp,
     });
   }
+
+  static void followUser({String currentUserId, String userId}) {
+    followingRef
+        .document(currentUserId)
+        .collection('userFollowing')
+        .document(userId)
+        .setData({});
+
+    followersRef
+        .document(currentUserId)
+        .collection('userFollowers')
+        .document(userId)
+        .setData({});
+  }
+
+  static void unfollowUser({String currentUserId, String userId}) {
+    followingRef
+        .document(currentUserId)
+        .collection('userFollowing')
+        .document(userId)
+        .get()
+        .then((doc) {
+      if (doc.exists) {
+        doc.reference.delete();
+      }
+    });
+
+    followersRef
+        .document(currentUserId)
+        .collection('userFollowers')
+        .document(userId)
+        .get()
+        .then((doc) {
+      if (doc.exists) {
+        doc.reference.delete();
+      }
+    });
+  }
+
+  static Future<bool> isfollowingUser(
+      {String currentUserId, String userId}) async {
+    DocumentSnapshot followingDoc = await followingRef
+        .document(userId)
+        .collection('userFollowers')
+        .document(currentUserId)
+        .get();
+    return followingDoc.exists;
+  }
+
+  static Future<int> numFollowing(String userId) async {
+    QuerySnapshot followingSnapshot = await followingRef
+        .document(userId)
+        .collection('userFollowing')
+        .getDocuments();
+    return followingSnapshot.documents.length;
+  }
+
+  static Future<int> numFollowers(String userId) async {
+   QuerySnapshot followerSnapshot = await followingRef
+        .document(userId)
+        .collection('userFollowers')
+        .getDocuments();
+    return followerSnapshot.documents.length;
+
+  }
 }
