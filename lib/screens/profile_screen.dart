@@ -104,7 +104,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
             ),
           )
-        : Container(
+        :  Container(
             width: 200.0,
             child: FlatButton(
               onPressed: _followOrUnfollow,
