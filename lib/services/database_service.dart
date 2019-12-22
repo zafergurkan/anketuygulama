@@ -36,9 +36,9 @@ class DatabaseService {
         .setData({});
 
     followersRef
-        .document(currentUserId)
-        .collection('userFollowers')
         .document(userId)
+        .collection('userFollowers')
+        .document(currentUserId)
         .setData({});
   }
 
@@ -55,9 +55,9 @@ class DatabaseService {
     });
 
     followersRef
-        .document(currentUserId)
-        .collection('userFollowers')
         .document(userId)
+        .collection('userFollowers')
+        .document(currentUserId)
         .get()
         .then((doc) {
       if (doc.exists) {
@@ -68,7 +68,7 @@ class DatabaseService {
 
   static Future<bool> isfollowingUser(
       {String currentUserId, String userId}) async {
-    DocumentSnapshot followingDoc = await followingRef
+    DocumentSnapshot followingDoc = await followersRef
         .document(userId)
         .collection('userFollowers')
         .document(currentUserId)
@@ -85,11 +85,11 @@ class DatabaseService {
   }
 
   static Future<int> numFollowers(String userId) async {
-   QuerySnapshot followerSnapshot = await followingRef
+   QuerySnapshot followersSnapshot = await followersRef
         .document(userId)
         .collection('userFollowers')
         .getDocuments();
-    return followerSnapshot.documents.length;
+    return followersSnapshot.documents.length;
 
   }
 }
