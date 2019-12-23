@@ -104,6 +104,17 @@ class DatabaseService {
   }
 
 
+static Future<List<Post>> getUserPosts(String userId) async {
+    QuerySnapshot userPostsSnapshot = await postRef
+        .document(userId)
+        .collection('userPosts')
+        .orderBy('timestamp', descending: true)
+        .getDocuments();
+    List<Post> posts =
+        userPostsSnapshot.documents.map((doc) => Post.fromDoc(doc)).toList();
+    return posts;
+  }
+
   static Future<User> getUserWithId(String userId) async {
     DocumentSnapshot userDocSnapshot = await userRef.document(userId).get();
     if (userDocSnapshot.exists) {
