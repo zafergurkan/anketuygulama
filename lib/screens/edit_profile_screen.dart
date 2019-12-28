@@ -81,7 +81,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
         backgroundColor: Colors.deepPurple,
         title: Text(
           'Profili Düzenle',
-          style: TextStyle(color: Colors.black),
+          style: TextStyle(color: Colors.white),
         ),
       ),
       body: GestureDetector(
@@ -107,7 +107,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                       child: Text(
                         'Profil Resmini Değiştir',
                         style: TextStyle(
-                            color: Theme.of(context).accentColor, fontSize: 16.0),
+                            color: Colors.deepPurple, fontSize: 16.0), //buranın rengini değiştir.
                       ),
                     ),
                     TextFormField(
