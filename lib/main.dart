@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      builder: (context)=>UserData(),
+      create: (context)=>UserData(),
           child: MaterialApp(
           title: 'PollApp',
           debugShowCheckedModeBanner: false,

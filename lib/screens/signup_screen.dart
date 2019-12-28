@@ -34,7 +34,7 @@ class _SinupScreenState extends State<SinupScreen> {
                 style: TextStyle(
                     fontSize: 50.0,
                     fontFamily: 'SEGA',
-                    color: Color.fromRGBO(0, 191, 255, 50)),
+                    color: Colors.deepPurple),
               ),
               SizedBox(
                 height: 15.0,
@@ -103,7 +103,7 @@ class _SinupScreenState extends State<SinupScreen> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(32.0)),
                         onPressed: _sumbit,
-                        color: Color.fromRGBO(0, 191, 255, 50),
+                        color: Colors.deepPurple,
                         child: Text(
                           "Singup",
                           style: TextStyle(color: Colors.white, fontSize: 18.0),
@@ -119,7 +119,7 @@ class _SinupScreenState extends State<SinupScreen> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(32.0)),
                         onPressed: () => Navigator.pop(context),
-                        color: Color.fromRGBO(0, 191, 255, 50),
+                        color: Colors.deepPurple,
                         child: Text(
                           "Login",
                           style: TextStyle(color: Colors.white, fontSize: 18.0),

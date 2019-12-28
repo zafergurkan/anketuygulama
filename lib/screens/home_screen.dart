@@ -43,8 +43,10 @@ class _HomeScreenState extends State<HomeScreen> {
             });
           },
         ),
-        bottomNavigationBar: CupertinoTabBar(
-          activeColor: Colors.deepPurple,
+        bottomNavigationBar: 
+        CupertinoTabBar(
+          backgroundColor: Colors.deepPurple,
+          activeColor: Colors.white,
           currentIndex: _currentTab,
           onTap: (int index) {
             setState(() {
@@ -59,30 +61,38 @@ class _HomeScreenState extends State<HomeScreen> {
           },
           items: [
             BottomNavigationBarItem(
+            
+              title:Text('Anasayfa'),
               icon: Icon(
                 Icons.home,
                 size: 32.0,
               ),
             ),
             BottomNavigationBarItem(
+      
+               title:Text('Ara'),
               icon: Icon(
+              
                 Icons.search,
                 size: 32.0,
               ),
             ),
             BottomNavigationBarItem(
+              title:Text('Kamera'),
               icon: Icon(
                 Icons.photo_camera,
                 size: 32.0,
               ),
             ),
             BottomNavigationBarItem(
+              title:Text('Bildirim'),
               icon: Icon(
                 Icons.notifications,
                 size: 32.0,
               ),
             ),
             BottomNavigationBarItem(
+              title:Text('Profi'),
               icon: Icon(
                 Icons.account_circle,
                 size: 32.0,

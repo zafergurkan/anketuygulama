@@ -78,7 +78,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.deepPurple,
         title: Text(
           'Profili Düzenle',
           style: TextStyle(color: Colors.black),

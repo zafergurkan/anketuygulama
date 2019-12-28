@@ -2,6 +2,7 @@ import 'package:anketuygulama/models/post_model.dart';
 import 'package:anketuygulama/models/user_data.dart';
 import 'package:anketuygulama/models/user_model.dart';
 import 'package:anketuygulama/screens/edit_profile_screen.dart';
+import 'package:anketuygulama/services/auth_service.dart';
 import 'package:anketuygulama/services/database_service.dart';
 import 'package:anketuygulama/utilities/constants.dart';
 import 'package:anketuygulama/widget/post_view.dart';
@@ -148,13 +149,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
           padding: EdgeInsets.fromLTRB(30.0, 30.0, 30.0, 0.0),
           child: Row(
             children: <Widget>[
-              CircleAvatar(
-                radius: 50.0,
-                backgroundColor: Colors.grey,
-                backgroundImage: user.profileImageUrl.isEmpty
-                    ? AssetImage('assets/images/user_placeholder.jpg')
-                    : CachedNetworkImageProvider(user.profileImageUrl),
-              ),
               Expanded(
                 child: Column(
                   children: <Widget>[
@@ -171,8 +165,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               ),
                             ),
                             Text(
-                              'posts',
-                              style: TextStyle(color: Colors.black54),
+                              'Gönderi',
+                              style: TextStyle(color: Colors.deepPurple),
                             ),
                           ],
                         ),
@@ -186,8 +180,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               ),
                             ),
                             Text(
-                              'followers',
-                              style: TextStyle(color: Colors.black54),
+                              'Takipçi',
+                              style: TextStyle(color: Colors.deepPurple),
                             ),
                           ],
                         ),
@@ -201,8 +195,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               ),
                             ),
                             Text(
-                              'following',
-                              style: TextStyle(color: Colors.black54),
+                              'Takip',
+                              style: TextStyle(color: Colors.deepPurple),
                             ),
                           ],
                         ),
@@ -232,12 +226,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   SizedBox(
                     height: 5.0,
                   ),
-                  Container(
+                  Container( 
+                    
                     height: 80.0,
                     child: Text(
+                    
                       user.bio,
                       style: TextStyle(
                         fontSize: 15.0,
+                        decoration:  TextDecoration.underline,
                       ),
                     ),
                   ),
@@ -279,12 +276,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 
-  _buildTilePost(Post post){
-    return GridTile(child: Image(image: CachedNetworkImageProvider(post.imageUrl),
-    fit: BoxFit.cover,),);
-
-
-
+  _buildTilePost(Post post) {
+    return GridTile(
+      child: Image(
+        image: CachedNetworkImageProvider(post.imageUrl),
+        fit: BoxFit.cover,
+      ),
+    );
   }
 
   _buildDisplayPosts() {
@@ -299,11 +297,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
         crossAxisCount: 3,
         childAspectRatio: 1.0,
         mainAxisSpacing: 2.0,
-        crossAxisSpacing:2.0 ,
+        crossAxisSpacing: 2.0,
         shrinkWrap: true,
         physics: NeverScrollableScrollPhysics(),
         children: tiles,
-
       );
     } else {
       List<PostView> postview = [];
@@ -324,15 +321,27 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
+      
+        
+        backgroundColor: Colors.deepPurple.shade500,
         title: Text(
+          
           'PollApp',
           style: TextStyle(
-            color: Colors.deepPurple,
+            color: Colors.white,
             fontFamily: 'SEGA',
+           
             fontSize: 15.0,
+   
           ),
         ),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.exit_to_app),
+            onPressed: AuthService.logout,
+            color: Colors.white,
+          )
+        ],
       ),
       backgroundColor: Colors.white,
       body: FutureBuilder(
@@ -346,6 +355,23 @@ class _ProfileScreenState extends State<ProfileScreen> {
           User user = User.fromDoc(snapshot.data);
           return ListView(
             children: <Widget>[
+              Padding(
+                padding: EdgeInsets.fromLTRB(30.0, 30.0, 30.0, 0.0),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                  
+                    CircleAvatar(
+                      radius: 50.0,
+                      backgroundColor: Colors.grey,
+                      backgroundImage: user.profileImageUrl.isEmpty
+                          ? AssetImage('assets/images/user_placeholder.jpg')
+                          : CachedNetworkImageProvider(user.profileImageUrl),
+                    ),
+                  ],
+                ),
+              ),
               _buildProfileInfo(user),
               _buildToggleButtons(),
               Divider(),

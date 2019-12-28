@@ -46,13 +46,14 @@ class _SearchScreenState extends State<SearchScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.white,
+          backgroundColor: Colors.deepPurple,
           title: TextField(
             controller: _searchController,
             decoration: InputDecoration(
               contentPadding: EdgeInsets.symmetric(vertical: 15.0),
               border: InputBorder.none,
               hintText: 'Ara',
+              fillColor: Colors.white,
               prefixIcon: Icon(
                 Icons.search,
                 size: 30.0,
@@ -74,7 +75,9 @@ class _SearchScreenState extends State<SearchScreen> {
         ),
         body: _users == null
             ? Center(
-                child: Text('Arama Yapın!'),
+                child: Text('Arama Yapın!',
+                style: TextStyle(color: Colors.deepPurple),
+                ),
               )
             : FutureBuilder(
                 future: _users,
@@ -86,7 +89,8 @@ class _SearchScreenState extends State<SearchScreen> {
                   }
                   if (snapshot.data.documents.length == 0) {
                     return Center(
-                      child: Text('Böyle bir kullanıcı yok!'),
+                      child: Text('Böyle bir kullanıcı yok!',
+                       style: TextStyle(color: Colors.deepPurple),),
                     );
                   }
                   return ListView.builder(

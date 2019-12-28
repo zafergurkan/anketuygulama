@@ -126,11 +126,11 @@ class _CreateScreenState extends State<CreateScreen> {
     final height = MediaQuery.of(context).size.height;
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.white,
+          backgroundColor: Colors.deepPurple,
           title: Text(
             'PollApp',
             style: TextStyle(
-              color: Colors.deepPurple,
+              color: Colors.white,
               fontFamily: 'SEGA',
               fontSize: 15.0,
             ),

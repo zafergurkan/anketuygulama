@@ -39,11 +39,11 @@ class _FeedScrenState extends State<FeedScren> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.deepPurple,
         title: Text(
           'PollApp',
           style: TextStyle(
-            color: Colors.deepPurple,
+            color: Colors.white,
             fontFamily: 'SEGA',
             fontSize: 15.0,
           ),
