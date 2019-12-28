@@ -29,7 +29,7 @@ class _SearchScreenState extends State<SearchScreen> {
             context,
             MaterialPageRoute(
                 builder: (_) => ProfileScreen(
-                  currentUserId:Provider.of<UserData>(context).currentUserId,
+                  currentUserId:Provider.of<UserData>(context,listen: false).currentUserId,
                       userId: user.id,
                     ))));
   }

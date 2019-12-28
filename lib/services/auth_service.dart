@@ -22,7 +22,7 @@ class AuthService {
           'email': email,
           'profileImageUrl': '',
         });
-        Provider.of<UserData>(context).currentUserId = signedInUser.uid;
+        Provider.of<UserData>(context, listen: false).currentUserId = signedInUser.uid;
         Navigator.pop(context);
       }
     } catch (e) {

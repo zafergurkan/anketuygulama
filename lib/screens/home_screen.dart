@@ -26,7 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final String currentUserId = Provider.of<UserData>(context).currentUserId;
+    final String currentUserId = Provider.of<UserData>(context,listen: false).currentUserId;
     return Scaffold(
         body: PageView(
           controller: _pageController,
