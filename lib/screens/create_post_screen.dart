@@ -137,6 +137,7 @@ class _CreateScreenState extends State<CreateScreen> {
           ),
           actions: <Widget>[
             IconButton(
+              color: Colors.white,
               icon: Icon(Icons.add),
               onPressed: _submit,
             )
